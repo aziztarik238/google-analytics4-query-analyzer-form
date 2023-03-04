@@ -8,7 +8,7 @@ function GA4QueryGenerator1() {
     endDate: "",
     metrics: [],
     dimensions: [],
-    filters: []
+    filters: [],
   };
 
   return (
@@ -16,14 +16,8 @@ function GA4QueryGenerator1() {
       initialValues={initialValues}
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(false);
-        const {
-          viewId,
-          startDate,
-          endDate,
-          metrics,
-          dimensions,
-          filters
-        } = values;
+        const { viewId, startDate, endDate, metrics, dimensions, filters } =
+          values;
         const query = {
           reportRequests: [
             {
@@ -36,12 +30,12 @@ function GA4QueryGenerator1() {
                   {
                     dimensionName: filter.dimension,
                     operator: filter.operator,
-                    expressions: filter.values
-                  }
-                ]
-              }))
-            }
-          ]
+                    expressions: filter.values,
+                  },
+                ],
+              })),
+            },
+          ],
         };
         alert(JSON.stringify(query, null, 2));
       }}
